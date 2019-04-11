@@ -111,9 +111,10 @@ body{
 
 .flexbox,
 .flexbox-reverse {
-    width: 100%;
+    width: 80%;
     height: auto;
     display: flex;
+    
 }
 
 .flexbox {
@@ -125,11 +126,21 @@ body{
 }
 
 .flexbox > .message {
+    margin: 1%;
+    padding: 20px;
+    width: 50%;
     background: aquamarine;
+    border: 1px solid rgba(0, 0, 0, .5);
+    border-radius: 10px;
 }
 
 .flexbox-reverse > .message-rep {
+    margin: 1%;
+    padding: 20px;
+    width: 50%;
     background: khaki;
+    border: 1px solid rgba(0, 0, 0, .5);
+    border-radius: 10px;
 }
 /* end form chat*/
 /* input */

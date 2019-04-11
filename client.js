@@ -32,23 +32,25 @@ $(document).ready(function(){
     });
 
     socket.on("server-sent-account", function(account){
-        socket.id = account.id;
+      //  socket.name = name;
         localStorage.setItem("__account", JSON.stringify(account));
     });
 
     //  input message
     $("#input-message").keyup(function(event){
         if(event.keyCode === 13){
+            var __account = JSON.parse(localStorage.getItem("__account"));
             let message = {
-                "id": socket.id,
-                "name": socket.name,
+                "id": __account.id,
+                "name": __account.name,
                 "message" : $(this).val().trim()
             }
             socket.emit("Client-sent-message-to-server", message);
         }
     });
    socket.on("Server-sent-message-to-client", function(data){
-    if(data.id !== socket.id) {
+    var __account = JSON.parse(localStorage.getItem("__account"));
+    if(data.name !== __account.name) {
         console.log(data.name);
         let message = `<div class="flexbox">
                 <div class="message">
@@ -57,7 +59,7 @@ $(document).ready(function(){
                 </div>
             </div>`
         $(".form-chat").append(message);
-    } else {
+    }else {
         console.log(data.name);
         let message = `<div class="flexbox-reverse">
                 <div class="message-rep">
