@@ -30,12 +30,12 @@ body{
 }
 .main-left__top{
     width: 100%;
-    height: 20vh;
+    height: 10vh;
     border-bottom: thin solid gray;  
 }
 .list-left__user{
     width: 100%;
-    height: 80vh;
+    height: 90vh;
     overflow-y: scroll;
 }
 .list-left__user::-webkit-scrollbar{
@@ -66,6 +66,14 @@ body{
     left: 50%;
     transform: translate(-50%,-50%);
 }
+.content-login{
+    width: 20%;
+    height: 5%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
 .form-control:focus {
     outline: 0;
     box-shadow: 0 0 0 0.1rem rgba(0,123,255,.25);
@@ -74,3 +82,75 @@ body{
     outline: 0;
     box-shadow: 0 0 0 0.1rem rgba(0,123,255,.25);
 }
+.main-right > .form-title{
+    width: 100vw;
+    height: 10vh;
+    background: #007bff;
+}
+/* form chat*/
+.main-right > .form-chat{
+    width: 100vw;
+    height: 80vh;
+    background:whitesmoke;
+}
+.form-chat > .message-name{
+    width: 60%;
+    position: relative;
+    height: auto;
+    margin: 10px 30px;
+    border: 1px solid rgba(0, 0, 0, .5);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.message > .message-name,
+.message-rep > .message-name {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.flexbox,
+.flexbox-reverse {
+    width: 100%;
+    height: auto;
+    display: flex;
+}
+
+.flexbox {
+    flex-direction: row;
+}
+
+.flexbox-reverse {
+    flex-direction: row-reverse;
+}
+
+.flexbox > .message {
+    background: aquamarine;
+}
+
+.flexbox-reverse > .message-rep {
+    background: khaki;
+}
+/* end form chat*/
+/* input */
+.main-right > .form-input{
+    top: 0px;
+    widows: 100vw;
+    height: 10vh;
+    background: white;
+}
+.input-group {
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%,-50%);
+}
+.form-control {
+    height: 100%;
+}
+.input-group-append {
+    width: 10%;
+}
+.btn {
+    width: 100%;
+}
+/*end input*/

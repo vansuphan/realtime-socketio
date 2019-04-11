@@ -39,5 +39,19 @@ io.on('connection', function (socket) {
         arrClient.push(socket.name);
         serverArrayUser();
         console.log(arrClient);
+        socket.emit("server-sent-account", {"id":socket.id,"name": socket.name});
+
     });
+    socket.on("have a account in browser", function (data) { 
+        var __account = JSON.parse(data);
+        socket.id = __account.id;
+        socket.name = __account.name;
+        arrClient.push(socket.name);
+        console.log(arrClient);
+        serverArrayUser();
+     });
+     socket.on("Client-sent-message-to-server", function(data){
+         socket.broadcast.emit("Server-sent-message-to-client", data);
+         console.log(data);
+     });
 });
