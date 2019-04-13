@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
+var axios = require('axios');
 
 app.use(express.static("./"));
 
@@ -34,12 +35,12 @@ io.on('connection', function (socket) {
         console.log("User", socket.id , " Da thoat ");
         serverArrayUser();
     });
-    socket.on("Client-sent-username", function(userName){
+    socket.on("Client-sent-username-to-server", function(userName){
         socket.name = userName;
         arrClient.push(socket.name);
         serverArrayUser();
         console.log(arrClient);
-        socket.emit("server-sent-account", {"id":socket.id,"name": socket.name});
+        socket.emit("server-sent-account-to-client", {"id":socket.id,"name": socket.name});
 
     });
     socket.on("have a account in browser", function (data) { 
@@ -47,11 +48,24 @@ io.on('connection', function (socket) {
         socket.id = __account.id;
         socket.name = __account.name;
         arrClient.push(socket.name);
-        console.log(arrClient);
+        //console.log(arrClient);
         serverArrayUser();
      });
      socket.on("Client-sent-message-to-server", function(data){
          socket.broadcast.emit("Server-sent-message-to-client", data);
-         console.log(data);
+         axios("http://sandbox.api.simsimi.com/request.p?key=4436e004-9236-4162-8936-d9904bdfbdf5&lc=en&ft=1.0&text="+data.message)
+         .then(respons => {
+            socket.broadcast.emit("Server-sent-message-to-client", {
+                "id" : "suphan",
+                "name" : "Anh Su dep trai",
+                "message" : respons.data.response
+            });
+            //console.log(respons.data.response);
+            return respons.data.response;
+         })
+         .catch(err =>{
+             return err;
+         });
+         
      });
 });

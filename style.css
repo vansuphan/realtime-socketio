@@ -92,6 +92,7 @@ body{
     width: 100vw;
     height: 80vh;
     background:whitesmoke;
+    overflow-y: scroll;
 }
 .form-chat > .message-name{
     width: 60%;
