@@ -1,7 +1,5 @@
 {
-    "scripts": {
-        "start": "node app.js"
-    },
+ 
     "dependencies": {
         "axios": "^0.18.0",
         "ejs": "^2.6.1",
