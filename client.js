@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
     var htmlListUser = document.getElementById("list-user");
-    var socket = io.connect('http://localhost:3000');
+    var socket = io.connect('https://git.heroku.com/chat-realtime-v1.git');
     var __account = localStorage.getItem("__account");
 
     $(".main").hide();

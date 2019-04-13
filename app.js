@@ -6,7 +6,8 @@ var axios = require('axios');
 
 app.use(express.static("./"));
 
-server.listen(3000, ()=> {
+var port = process.env.PORT || 3000;
+server.listen(port, ()=> {
     console.log("Start Server port 3000")
 });
 // WARNING: app.listen(3000) will NOT work here!
